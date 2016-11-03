@@ -12,44 +12,55 @@
 
     <script>
 
+        $(document).ready(function() {
+            var data = <%- data %>;
+            console.log(data);
+
+            if (data !== undefined) {
+                generateSelector();
+            }
+            function generateSelector() {
+                var x = document.getElementById("selector");
+
+                for (i = 0; i < data.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = data[i].email;
+                    option.text = data[i].email;
+                    x.appendChild(option);
+                }
+
+            };
+        });
+
     </script>
 
 </head>
 
 <body>
 <header>
-    <% include ../partials/header %>
+    <% include ../partials/admin_header.ejs %>
 </header>
 <h2 class="form-signin-heading" style="text-align: center">Add New Supporter</h2>
-<div class="container-fluid" style="margin-left: 50px;margin-right: 50px">
+<div class="container-fluid" style="margin-left: 50px;margin-right: 50px;margin-top: 100px">
     <div class="row">
-        <div class="col-sm-12">
-            <form class="form-signin" action = "/new_user" method="POST">
+        <div class="col-sm-12 col-md-6 col-md-offset-3">
+            <form class="form-signin" action = "/add/user" method="POST">
 
                 <div class="form-group">
-                    <label for="name">Name :</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <label for="name">username :</label>
+                    <input type="text" class="form-control" id="name" name="username">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email-id :</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <label for="email">password :</label>
+                    <input type="password" class="form-control" id="email" name="password">
                 </div>
                 <div class="form-group">
-                    <label for="gender">gender :</label>
-                    <select class="form-control" id="gender"  name = "gender">
-                        <option value="Male" >Male</option>
-                        <option value="Female" >Female</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="age">age :</label>
-                    <input type="number" class="form-control" id="age" min=0 max=200 name="age">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password :</label>
-                    <input type="password" class="form-control" id="pwd" name="passw">
-                </div>
+                    <label for="email">Select Supporter :</label>
+                <select class="form-control" id="selector" name="supporter">
 
+
+                </select>
+                </div>
                 <% if( typeof error !== 'undefined' ){
                 %>
                 <p><%= error%></p>

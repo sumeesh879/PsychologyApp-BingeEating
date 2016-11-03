@@ -18,13 +18,13 @@
 
 <body>
 <header>
-    <% include ../partials/header %>
+    <% include ../partials/admin_header.ejs %>
 </header>
 <h2 class="form-signin-heading" style="text-align: center">Add New Supporter</h2>
 <div class="container-fluid" style="margin-left: 50px;margin-right: 50px">
     <div class="row">
         <div class="col-sm-12">
-            <form class="form-signin" action = "/new_user" method="POST">
+            <form class="form-signin" action = "/add/supporter" method="POST">
 
                 <div class="form-group">
                     <label for="name">Name :</label>

@@ -15,6 +15,7 @@ var login = require('./routes/login');
 var add = require('./routes/add');
 var admin = require('./routes/admin');
 var supporter = require('./routes/supporter');
+var logout = require('./routes/logout');
 
 // create a new express server
 var app = express();
@@ -42,6 +43,7 @@ app.use('/login', login);
 app.use('/add',add);
 app.use('/admin',admin);
 app.use('/supporter',supporter);
+app.use('/logout',logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
