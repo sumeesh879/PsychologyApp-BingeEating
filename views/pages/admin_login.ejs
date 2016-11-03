@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="sign page of admin">
+    <meta name="author" content="indra">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signin</title>
+    <% include ../partials/head %>
+    <link href="/stylesheets/signin.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+    <h2 class="form-signin-heading">Welcome, Please login </h2>
+    <form class="form-signin" action="/login/admin" method="get">
+
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+        <% if( typeof error !== 'undefined' ){
+        %>
+        <p><%= error%></p>
+        <%
+        }%>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+
+</div> <!-- /container -->
+
+
+</body>
+</html>

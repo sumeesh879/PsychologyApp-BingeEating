@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Signin</title>
+    <% include ../partials/head %>
+    <link href="/stylesheets/admin_home.css" rel="stylesheet">
+
+    <script>
+
+    </script>
+
+</head>
+
+<body>
+<header>
+    <% include ../partials/header %>
+</header>
+<h2 class="form-signin-heading" style="text-align: center">Add New Supporter</h2>
+<div class="container-fluid" style="margin-left: 50px;margin-right: 50px">
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="form-signin" action = "/new_user" method="POST">
+
+                <div class="form-group">
+                    <label for="name">Name :</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email-id :</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="gender">gender :</label>
+                    <select class="form-control" id="gender"  name = "gender">
+                        <option value="Male" >Male</option>
+                        <option value="Female" >Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">age :</label>
+                    <input type="number" class="form-control" id="age" min=0 max=200 name="age">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password :</label>
+                    <input type="password" class="form-control" id="pwd" name="passw">
+                </div>
+
+                <% if( typeof error !== 'undefined' ){
+                %>
+                <p><%= error%></p>
+                <%
+                }%>
+                <button id="formsubmit" type="submit" class="btn btn-lg btn-primary btn-block">Add</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
