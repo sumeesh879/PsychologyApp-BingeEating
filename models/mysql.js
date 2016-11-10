@@ -28,12 +28,28 @@ var Supporter = bookshelf.Model.extend({
 var User = bookshelf.Model.extend({
   tableName: 'User'
 });
+var Login = bookshelf.Model.extend({
+	tableName: 'Login'
+});
 
 module.exports.Questions = function(callback) {
 new Question()
 .fetchAll()
 .then(callback);
 }
+module.exports.getLoginDetails = function(user,callback) {
+	console.log(user)
+	new Login({username: user })
+		.fetch()
+		.then(callback);
+}
+module.exports.putLoginDetails = function(data,callback) {
+	data.password = bcrypt.hashSync(data.password, saltRounds);
+	console.log(data);
+	new Login(data).save()
+		.then(callback);
+}
+
 
 module.exports.getAdmin = function(user,callback) {
 new Admin({email: user })
@@ -58,8 +74,7 @@ module.exports.getUser = function(user,callback) {
 		.then(callback);
 }
 module.exports.putSupporter = function(user,callback) {
-	user.passw = bcrypt.hashSync(user.passw, saltRounds);
-	console.log(user.username+' and '+user.passw);
+	console.log(user.username);
 
 	new Supporter(user).save()
 		.then(callback);

@@ -10,7 +10,7 @@ admin.get('/home', function (req, res,next) {
 
     verify_token.verify(req.session.token,function(err, decoded) {
 
-        if(!err){
+        if(!err && decoded.tag == 'admin'){
             console.log(decoded.user);
             user = decoded.user;
             res.render('pages/admin_home');
